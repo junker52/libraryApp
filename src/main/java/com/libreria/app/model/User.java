@@ -42,6 +42,17 @@ public class User {
 	@Column(name = "last_name")
 	@NotEmpty(message = "*Please provide your last name")
 	private String lastName;
+	@Column(name = "last_name2")
+	@NotEmpty(message = "*Please provide your last name")
+	private String lastName2;
+	public String getLastName2() {
+		return lastName2;
+	}
+
+	public void setLastName2(String lastName2) {
+		this.lastName2 = lastName2;
+	}
+
 	@Column(name = "active")
 	private int active;
 	@ManyToMany(cascade = CascadeType.ALL)

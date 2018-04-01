@@ -15,6 +15,8 @@ import com.libreria.app.service.UserService;
 @Controller
 public class loginController {
 	
+	private final String REGISTRO_VIEW = "registro";
+	
 	@Autowired
 	private UserService userService;
 
@@ -31,7 +33,7 @@ public class loginController {
 		ModelAndView modelAndView = new ModelAndView();
 		User user = new User();
 		modelAndView.addObject("user", user);
-		modelAndView.setViewName("registration");
+		modelAndView.setViewName(this.REGISTRO_VIEW);
 		return modelAndView;
 	}
 	
@@ -45,12 +47,12 @@ public class loginController {
 							"There is already a user registered with the email provided");
 		}
 		if (bindingResult.hasErrors()) {
-			modelAndView.setViewName("registration");
+			modelAndView.setViewName(this.REGISTRO_VIEW);
 		} else {
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
-			modelAndView.setViewName("registration");
+			modelAndView.setViewName(this.REGISTRO_VIEW);
 			
 		}
 		return modelAndView;
