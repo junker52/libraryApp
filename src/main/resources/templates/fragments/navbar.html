@@ -1,18 +1,18 @@
 <nav class="navbar navbar-expand-md bg-primary navbar-dark">
 	<div class="container">
-		<a class="navbar-brand" th:href="@{/}"><i
-			class="fa d-inline fa-lg fa-bookmark-o"></i><b>&nbsp; Library</b></a>
-		<button class="navbar-toggler navbar-toggler-right" type="button"
-			data-toggle="collapse" data-target="#navbar2SupportedContent"
-			aria-controls="navbar2SupportedContent" aria-expanded="false"
-			aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse text-center justify-content-end"
-			id="navbar2SupportedContent">
-			<a class="btn navbar-btn ml-2 text-white btn-secondary"
-				th:href="@{/registro}"><i
-				class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Registro</a>
+		<a class="navbar-brand" th:href="@{/}"><i class="fa d-inline fa-lg fa-bookmark-o"></i><b>&nbsp; Library</b></a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+		<div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
+			<div class="btn-group">
+				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item lang-option" href="#">ES</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item lang-option" href="#">FR</a>
+				</div>
+			</div>
+			<a class="btn navbar-btn ml-2 text-white btn-secondary"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Registro</a>
 		</div>
 	</div>
 </nav>
