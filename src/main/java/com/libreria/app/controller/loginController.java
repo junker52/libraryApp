@@ -2,6 +2,7 @@ package com.libreria.app.controller;
 
 import javax.validation.Valid;
 
+import com.libreria.app.dto.LibraryBaseModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,44 +16,40 @@ import com.libreria.app.service.UserService;
 @Controller
 public class loginController {
 	
-	private final String REGISTRO_VIEW = "registro";
+	private final static String REGISTRO_VIEW = "registro";
+	private final static String LOGIN_VIEW = "login";
 	
 	@Autowired
 	private UserService userService;
 
 	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public ModelAndView login(){
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("login");
+	public LibraryBaseModel login(){
+		LibraryBaseModel modelAndView = new LibraryBaseModel(LOGIN_VIEW, "login.title");
 		return modelAndView;
 	}
 	
 	
 	@RequestMapping(value="/registro", method = RequestMethod.GET)
-	public ModelAndView registration(){
-		ModelAndView modelAndView = new ModelAndView();
+	public LibraryBaseModel registration(){
+		LibraryBaseModel modelAndView = new LibraryBaseModel(REGISTRO_VIEW, "registro.title");
 		User user = new User();
 		modelAndView.addObject("user", user);
-		modelAndView.setViewName(this.REGISTRO_VIEW);
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.POST)
-	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
-		ModelAndView modelAndView = new ModelAndView();
+	public LibraryBaseModel createNewUser(@Valid User user, BindingResult bindingResult) {
+		LibraryBaseModel modelAndView = new LibraryBaseModel(REGISTRO_VIEW, "registro.title");
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
 			bindingResult
 					.rejectValue("email", "error.user",
 							"There is already a user registered with the email provided");
 		}
-		if (bindingResult.hasErrors()) {
-			modelAndView.setViewName(this.REGISTRO_VIEW);
-		} else {
+		if (!bindingResult.hasErrors()) {
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("user", new User());
-			modelAndView.setViewName(this.REGISTRO_VIEW);
 			
 		}
 		return modelAndView;

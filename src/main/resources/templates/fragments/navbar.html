@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-primary navbar-dark">
+<nav class="navbar navbar-expand-md bg-primary navbar-dark" xmlns:th="http://www.w3.org/1999/xhtml">
 	<div class="container">
 		<a class="navbar-brand" th:href="@{/}"><i class="fa d-inline fa-lg fa-bookmark-o"></i><b>&nbsp; Library</b></a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false"
@@ -12,7 +12,8 @@
 					<a class="dropdown-item lang-option" href="#">FR</a>
 				</div>
 			</div>
-			<a class="btn navbar-btn ml-2 text-white btn-secondary"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Registro</a>
+			<a th:if="${view} == 'login'" th:href="@{/registro}" class="btn navbar-btn ml-2 text-white btn-secondary"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Registro</a>
+			<a th:if="${view} == 'registro'" th:href="@{/login}" class="btn navbar-btn ml-2 text-white btn-secondary"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Login</a>
 		</div>
 	</div>
 </nav>
