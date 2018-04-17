@@ -115,4 +115,16 @@ public class User {
 		this.roles = hashSet;
 	}
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", name='" + name + '\'' +
+				", lastName='" + lastName + '\'' +
+				", lastName2='" + lastName2 + '\'' +
+				", active=" + active +
+				'}';
+	}
 }
