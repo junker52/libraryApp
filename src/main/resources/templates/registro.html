@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head th:insert="@{/fragments/head}">
+<head th:replace="fragments/templates :: head">
 </head>
 
 <body>
-	<div th:insert="@{/fragments/navbar}"></div>
+	<nav th:replace="fragments/templates :: navbar">
+		<p>Navbar!</p>
+	</nav>
 	<div class="py-5">
 		<div class="container">
 			<div class="alert alert-success" th:if="${successMessage}">
@@ -72,6 +75,9 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div th:replace="fragments/templates :: footer">
+		<p>Footer</p>
 	</div>
 </body>
 

@@ -1,36 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head th:insert="@{/fragments/head}">
+<head th:replace="fragments/templates :: head">
+</head>
 
 <body >
-<nav class="navbar navbar-expand-md bg-primary navbar-dark">
-	<div class="container">
-		<a class="navbar-brand" href="#">
-			<i class="fa d-inline fa-lg fa-bookmark-o"></i>
-			<b >&nbsp; Hola <span th:text="${sessionContext.usuario.name}"></span></b>
-		</a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
-			<div class="btn-group">
-				<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> Dropdown </button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item" href="#">Action</a>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item" href="#">Separated link</a>
-				</div>
-			</div>
-			<a class="btn navbar-btn ml-2 text-white btn-secondary">
-				<i class="fa d-inline fa-lg fa-sign-out"></i>&nbsp; Salir</a>
-		</div>
-	</div>
+<nav class="navbar navbar-expand-md bg-primary navbar-dark" th:replace="fragments/templates :: navbar">
+	<p>Navbar!</p>
 </nav>
 <div class="py-5">
 	<div class="container">
-		<div class="card-columns">
-			<div class="card" th:each="libro : ${sessionContext.libros}">
+		<div class="row">
+			<div class="col-sm-4 my-2" th:each="libro : ${sessionContext.libros}">
+			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title" th:text="${libro.titulo}"></h5>
 					<p class="card-text">Prueba</p>
@@ -47,12 +30,14 @@
 					</a>
 				</div>
 			</div>
+			</div>
 		</div>
 	</div>
 </div>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<div th:replace="fragments/templates :: footer">
+	<p>Footer</p>
+</div>
+
 </body>
 
 </html>
