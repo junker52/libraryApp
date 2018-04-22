@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" th:fragment="navbar">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title th:text="#{title}">Titulo</title>
+  <title th:text="${title}"></title>
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
         type="text/css">
@@ -21,7 +21,7 @@
 <body>
   <nav class="navbar navbar-expand-md bg-primary navbar-dark" th:fragment="navbar">
     <div class="container">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" th:href="@{/}">
         <i class="fa d-inline fa-lg fa-bookmark-o"></i>
         <b>&nbsp;Library</b>
       </a>
@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <div class="btn-group  pr-2"  sec:authorize="isAuthenticated()">
           <button class="btn dropdown-toggle btn-outline-secondary" data-toggle="dropdown">Hola
-            <strong>Juan&nbsp;</strong>
+            <strong th:text="${sessionContext.usuario.name}"></strong>
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Mis datos</a>
@@ -42,16 +42,16 @@
         <div class="btn-group">
           <button class="btn dropdown-toggle btn-outline-secondary" data-toggle="dropdown">Idioma&nbsp;</button>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">ES</a>
-            <a class="dropdown-item" href="#">FR</a>
-            <a class="dropdown-item" href="#">EN</a>
+            <a class="dropdown-item lang-option" href="#">ES</a>
+            <a class="dropdown-item lang-option" href="#">FR</a>
+            <a class="dropdown-item lang-option" href="#">EN</a>
           </div>
         </div>
-        <a class="btn navbar-btn ml-2 text-white btn-secondary">
+        <a class="btn navbar-btn ml-2 text-white btn-secondary" th:href="@{/logout}" sec:authorize="isAuthenticated()">
           <i class="fa d-inline fa-lg fa-sign-out"></i>&nbsp;Logout</a>
-        <a class="btn navbar-btn ml-2 text-white btn-secondary">
+        <a class="btn navbar-btn ml-2 text-white btn-secondary" th:href="@{/login}" th:if="${#strings.contains(title,'gistro')}">
           <i class="fa d-inline fa-lg fa-sign-in"></i>&nbsp;Login</a>
-        <a class="btn navbar-btn ml-2 text-white btn-secondary">
+        <a class="btn navbar-btn ml-2 text-white btn-secondary" th:href="@{/registro}" th:if="${#strings.contains(title,'login')}">
           <i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;Registro</a>
       </div>
     </div>
@@ -64,7 +64,7 @@
       </div>
     </div>
   </div>
-  <div class="py-5 bg-dark text-white" th:fragment="footer">
+  <footer class="py-5 bg-dark text-white footer" th:fragment="footer">
     <div class="container">
       <div class="row text-center">
         <div class="col-4 col-md-4 align-self-center">
@@ -89,7 +89,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </footer>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

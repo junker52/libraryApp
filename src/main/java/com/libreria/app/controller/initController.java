@@ -1,6 +1,8 @@
 package com.libreria.app.controller;
 
 import com.libreria.app.configuration.LibrarySessionContext;
+import com.libreria.app.dto.LibraryBaseModel;
+import com.libreria.app.globals.PageNameGlobals;
 import com.libreria.app.model.Autor;
 import com.libreria.app.model.Libro;
 import com.libreria.app.repository.AutorRepository;
@@ -20,22 +22,17 @@ public class initController {
 
 	public final String INITIAL_VIEW = "init";
 
-	private static final org.slf4j.Logger logger = LoggerFactory.getLogger(initController.class);
-
-	@Autowired
-	private LibroRepository libroRepository;
-
-	@Autowired
-	private AutorRepository autorRepository;
-
 	@Autowired
 	private LibrarySessionContext sessionContext;
 
+	private final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@GetMapping("/")
-	public ModelAndView initialView() {
-		ModelAndView mav = new ModelAndView(INITIAL_VIEW);
-		mav.addObject("sessionContext", sessionContext);
-		return mav;
+	public LibraryBaseModel initialView() {
+		logger.info("Init View Controller");
+		LibraryBaseModel lbm = new LibraryBaseModel(INITIAL_VIEW, PageNameGlobals.INIT_PAGE);
+		lbm.addObject("sessionContext",sessionContext);
+		return lbm;
 	}
 
 

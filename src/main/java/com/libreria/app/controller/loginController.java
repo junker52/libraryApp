@@ -3,6 +3,7 @@ package com.libreria.app.controller;
 import javax.validation.Valid;
 
 import com.libreria.app.dto.LibraryBaseModel;
+import com.libreria.app.globals.PageNameGlobals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -24,14 +25,14 @@ public class loginController {
 
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public LibraryBaseModel login(){
-		LibraryBaseModel modelAndView = new LibraryBaseModel(LOGIN_VIEW, "login.title");
+		LibraryBaseModel modelAndView = new LibraryBaseModel(LOGIN_VIEW, PageNameGlobals.LOGIN_PAGE);
 		return modelAndView;
 	}
 	
 	
 	@RequestMapping(value="/registro", method = RequestMethod.GET)
 	public LibraryBaseModel registration(){
-		LibraryBaseModel modelAndView = new LibraryBaseModel(REGISTRO_VIEW, "registro.title");
+		LibraryBaseModel modelAndView = new LibraryBaseModel(REGISTRO_VIEW, PageNameGlobals.REGISTRO_PAGE);
 		User user = new User();
 		modelAndView.addObject("user", user);
 		return modelAndView;
@@ -39,7 +40,7 @@ public class loginController {
 	
 	@RequestMapping(value = "/registro", method = RequestMethod.POST)
 	public LibraryBaseModel createNewUser(@Valid User user, BindingResult bindingResult) {
-		LibraryBaseModel modelAndView = new LibraryBaseModel(REGISTRO_VIEW, "registro.title");
+		LibraryBaseModel modelAndView = new LibraryBaseModel(REGISTRO_VIEW, PageNameGlobals.REGISTRO_PAGE);
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
 			bindingResult
