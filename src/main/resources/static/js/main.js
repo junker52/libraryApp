@@ -13,4 +13,23 @@ $(document).ready(function() {
         }
         location.replace(currentUrl+("?lang="+selectedOption));
     });
+
+
 });
+
+
+$(document).ready(function() {
+    //Showing Modal
+    $(".modal-class").click(function () {
+        var selectedId = $(this).attr('id');
+        console.log("Funcion JS con id: "+selectedId);
+        jQuery.get("/libro/"+selectedId+"/reserva", function (data, status) {
+            console.log("Consolo in ajax");
+        });
+    });
+
+});
+
+
+
+
