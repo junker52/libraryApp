@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class Libro {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_libro;
 
     private String titulo;

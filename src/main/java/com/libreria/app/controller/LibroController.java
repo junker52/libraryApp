@@ -23,6 +23,7 @@ public class LibroController {
     @GetMapping("libro/{id}/reserva")
     private LibraryBaseModel showReservaModal(@PathVariable("id") String id_libro){
         logger.info("Showing reservation modal for libro "+id_libro);
-        return null;
+        LibraryBaseModel lbm = new LibraryBaseModel("fragments/templates :: modal", "titulo");
+        return lbm;
     }
 }

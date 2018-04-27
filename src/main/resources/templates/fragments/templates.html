@@ -64,6 +64,43 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" th:fragment="modal" id="reservaModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Seleccionar fechas de reserva</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <p class="">Desea reservar el libro
+                <b></b> del autor
+                <b></b>: </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label contenteditable="true">Desde:</label>
+                <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control"> </div>
+            </div>
+            <div class="col-md-6">
+              <label>Hasta:</label>
+              <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control"> </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="text-center">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <footer class="py-5 bg-dark text-white" th:fragment="footer">
     <div class="container">
       <div class="row text-center">
