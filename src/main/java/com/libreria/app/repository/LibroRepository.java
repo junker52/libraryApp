@@ -4,7 +4,7 @@ import com.libreria.app.model.Libro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by HP on 12/04/2018.

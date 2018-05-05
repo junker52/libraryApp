@@ -9,4 +9,5 @@ import java.util.List;
  */
 public interface LibroService {
     List<Libro> findAllLibros();
+    Libro findLibroById(Integer id);
 }

@@ -22,4 +22,9 @@ public class LibroServiceImpl implements LibroService {
     public List<Libro> findAllLibros() {
         return libroRepository.findAll();
     }
+
+    @Override
+    public Libro findLibroById(Integer id) {
+        return libroRepository.getOne(id);
+    }
 }
