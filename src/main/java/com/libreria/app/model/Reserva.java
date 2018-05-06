@@ -1,7 +1,8 @@
 package com.libreria.app.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
@@ -12,22 +13,22 @@ public class Reserva {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_libro", nullable = false)
     private Libro libro;
 
-    @ManyToOne(cascade=CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.ALL )
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Temporal(TemporalType.DATE)
-    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaDesde;
 
     @Temporal(TemporalType.DATE)
-    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fechaHasta;
 
     private String commentario;

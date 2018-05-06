@@ -65,7 +65,7 @@
     </div>
   </div>
   <div class="modal fade" th:fragment="modal" id="reservaModal">
-    <form action="#" th:action="@{/crearReserva}" method="post" th:object="${reserva}">
+    <form action="#" th:action="@{/crearReserva(id=${reserva.libro.id})}" th:method="post" th:object="${reserva}">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
