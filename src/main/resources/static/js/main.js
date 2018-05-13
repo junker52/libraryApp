@@ -24,8 +24,27 @@ $(document).ready(function() {
         var selectedId = $(this).attr('id');
         $("#reserva-model").load("/libro/"+selectedId+"/reserva", function () {
             $('#reservaModal').modal('show');
+            validationReserva();
         })
     });
+
+    function validationReserva() {
+        //Validation form
+        $('#reservaModalForm').submit(function() {
+            console.log("Bloqueo de submit");
+            var datesJson = buildValidationJSON();
+            console.log(JSON.stringify(datesJson));
+            return false;
+        });
+    }
+
+    function buildValidationJSON() {
+        var fechaDesde = $('#fechaDesdeInput').val();
+        var fechaHasta = $('#fechaHastaInput').val();
+        var reservaDates = {'fechaDesde': fechaDesde, 'fechaHasta': fechaHasta};
+        return reservaDates;
+    }
+
 });
 
 

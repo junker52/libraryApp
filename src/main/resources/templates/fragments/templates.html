@@ -65,7 +65,7 @@
     </div>
   </div>
   <div class="modal fade" th:fragment="modal" id="reservaModal">
-    <form action="#" th:action="@{/crearReserva(id=${reserva.libro.id})}" th:method="post" th:object="${reserva}">
+    <form action="#" th:action="@{/crearReserva(id=${reserva.libro.id})}" id="reservaModalForm" th:method="post" th:object="${reserva}">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -86,11 +86,11 @@
             <div class="col-md-6">
               <div class="form-group">
                 <label contenteditable="true">Desde:</label>
-                <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control" th:field="*{fechaDesde}"> </div>
+                <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control" th:field="*{fechaDesde}" id="fechaDesdeInput"> </div>
             </div>
             <div class="col-md-6">
               <label>Hasta:</label>
-              <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control" th:field="*{fechaHasta}"> </div>
+              <input type="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control" th:field="*{fechaHasta}" id="fechaHastaInput"> </div>
           </div>
         </div>
         <div class="modal-footer">
