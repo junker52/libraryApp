@@ -40,6 +40,7 @@ $(document).ready(function() {
     }
 
     function buildValidationJSON() {
+
         var fechaDesde = $('#fechaDesdeInput').val();
         var fechaHasta = $('#fechaHastaInput').val();
         var reservaDates = {'fechaDesde': fechaDesde, 'fechaHasta': fechaHasta};
@@ -55,9 +56,25 @@ $(document).ready(function() {
             dataType: 'json',
             async: true,
             success: function(msg) {
-                console.log("OK"+JSON.stringify(msg));
+                if (msg.valid == false){
+                    console.log("KO - "+JSON.stringify(msg));
+                    displayErrors(msg.errorMessages);
+                } else {
+                    console.log("OK - "+JSON.stringify(msg));
+                }
             }
         });
+    }
+    
+    function displayErrors(errorMessages) {
+        if(errorMessages instanceof Array && errorMessages.length > 0){
+            errorMessages.forEach(function (elemento, indice, array) {
+                console.log(elemento, indice);
+                $("#alertValidationReservaDiv").append("<p> "+elemento+" </p>")
+            });
+        }
+        //Activamos el display de alerta
+        $("#alertValidationReservaDiv").removeClass("d-none");
     }
 
 });
