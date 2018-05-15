@@ -10,6 +10,7 @@ import com.libreria.app.service.ReservaService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -56,9 +57,17 @@ public class LibroController {
     }
 
     @PostMapping(value = "/validateReserva", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    private @ResponseBody ValidationReservaDTO validateReserva(@RequestBody ValidationReservaDTO validationReservaDTO){
+    private @ResponseBody ResponseEntity<ValidationReservaDTO> validateReserva(@RequestBody ValidationReservaDTO validationReservaDTO){
         this.logger.info(validationReservaDTO.toString());
-        return validationReservaDTO;
+        /**
+         * TODO Implementar metodo en ReservaService para validar la reserva antes de aceptar.
+         */
+        //Test
+        validationReservaDTO.getErrorMessages().add("Mensaje 1");
+        validationReservaDTO.getErrorMessages().add("Mensaje 2");
+        validationReservaDTO.setValid(Boolean.FALSE);
+        //Test
+        return ResponseEntity.ok(validationReservaDTO);
     }
 
 
