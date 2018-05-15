@@ -2,12 +2,14 @@ package com.libreria.app.controller;
 
 import com.libreria.app.configuration.LibrarySessionContext;
 import com.libreria.app.dto.LibraryBaseModel;
+import com.libreria.app.dto.ValidationReservaDTO;
 import com.libreria.app.model.Libro;
 import com.libreria.app.model.Reserva;
 import com.libreria.app.service.LibroService;
 import com.libreria.app.service.ReservaService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -45,7 +47,6 @@ public class LibroController {
     }
 
     @PostMapping("crearReserva")
-    @Transactional
     private RedirectView createReserva(@RequestParam("id") String id, Reserva reserva, RedirectAttributes redirectAttributes){
         reserva = this.addLibroToReserva(reserva, id);
         this.reservaService.createReserva(reserva);
@@ -53,6 +54,13 @@ public class LibroController {
         RedirectView redirectView = new RedirectView("/",false);
         return redirectView;
     }
+
+    @PostMapping(value = "/validateReserva", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    private @ResponseBody ValidationReservaDTO validateReserva(@RequestBody ValidationReservaDTO validationReservaDTO){
+        this.logger.info(validationReservaDTO.toString());
+        return validationReservaDTO;
+    }
+
 
     /**
      * Metodo para inyectar libro y usuario a la reserva

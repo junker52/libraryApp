@@ -34,6 +34,7 @@ $(document).ready(function() {
             console.log("Bloqueo de submit");
             var datesJson = buildValidationJSON();
             console.log(JSON.stringify(datesJson));
+            sendValidationJson(datesJson);
             return false;
         });
     }
@@ -43,6 +44,20 @@ $(document).ready(function() {
         var fechaHasta = $('#fechaHastaInput').val();
         var reservaDates = {'fechaDesde': fechaDesde, 'fechaHasta': fechaHasta};
         return reservaDates;
+    }
+
+    function sendValidationJson(validationJson) {
+        $.ajax({
+            url: window.location.origin+'/validateReserva',
+            type: 'POST',
+            data: JSON.stringify(validationJson),
+            contentType: 'application/json',
+            dataType: 'json',
+            async: true,
+            success: function(msg) {
+                console.log("OK"+JSON.stringify(msg));
+            }
+        });
     }
 
 });
