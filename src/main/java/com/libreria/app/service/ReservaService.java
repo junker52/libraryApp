@@ -1,5 +1,6 @@
 package com.libreria.app.service;
 
+import com.libreria.app.dto.ValidationReservaDTO;
 import com.libreria.app.model.Reserva;
 
 /**
@@ -7,4 +8,5 @@ import com.libreria.app.model.Reserva;
  */
 public interface ReservaService {
     void createReserva(Reserva reserva);
+    void validateReserva(ValidationReservaDTO validationReservaDTO);
 }

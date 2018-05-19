@@ -30,12 +30,11 @@ $(document).ready(function() {
 
     function validationReserva() {
         //Validation form
-        $('#reservaModalForm').submit(function() {
+        $('#validarReserva').click(function() {
             console.log("Bloqueo de submit");
             var datesJson = buildValidationJSON();
             console.log(JSON.stringify(datesJson));
             sendValidationJson(datesJson);
-            return false;
         });
     }
 
@@ -57,10 +56,10 @@ $(document).ready(function() {
             async: true,
             success: function(msg) {
                 if (msg.valid == false){
-                    console.log("KO - "+JSON.stringify(msg));
                     displayErrors(msg.errorMessages);
                 } else {
-                    console.log("OK - "+JSON.stringify(msg));
+                    $('#reservaModalForm').submit();
+
                 }
             }
         });

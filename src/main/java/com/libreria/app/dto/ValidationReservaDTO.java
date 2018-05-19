@@ -1,9 +1,11 @@
 package com.libreria.app.dto;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,22 +15,28 @@ public class ValidationReservaDTO  implements Serializable{
 
     private Boolean isValid = Boolean.FALSE;
     private List<String> errorMessages = new ArrayList<String>();
-    private String fechaHasta;
-    private String fechaDesde;
 
-    public String getFechaHasta() {
+    @NotNull(message = "La fecha de fin no puede estar vacía")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaHasta;
+
+    @NotNull(message = "La fecha de inicio no puede estar vacía")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date fechaDesde;
+
+    public Date getFechaHasta() {
         return fechaHasta;
     }
 
-    public void setFechaHasta(String fechaHasta) {
+    public void setFechaHasta(Date fechaHasta) {
         this.fechaHasta = fechaHasta;
     }
 
-    public String getFechaDesde() {
+    public Date getFechaDesde() {
         return fechaDesde;
     }
 
-    public void setFechaDesde(String fechaDesde) {
+    public void setFechaDesde(Date fechaDesde) {
         this.fechaDesde = fechaDesde;
     }
 

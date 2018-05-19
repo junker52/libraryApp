@@ -59,14 +59,7 @@ public class LibroController {
     @PostMapping(value = "/validateReserva", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     private @ResponseBody ResponseEntity<ValidationReservaDTO> validateReserva(@RequestBody ValidationReservaDTO validationReservaDTO){
         this.logger.info(validationReservaDTO.toString());
-        /**
-         * TODO Implementar metodo en ReservaService para validar la reserva antes de aceptar.
-         */
-        //Test
-        validationReservaDTO.getErrorMessages().add("Mensaje 1");
-        validationReservaDTO.getErrorMessages().add("Mensaje 2");
-        validationReservaDTO.setValid(Boolean.FALSE);
-        //Test
+        reservaService.validateReserva(validationReservaDTO);
         return ResponseEntity.ok(validationReservaDTO);
     }
 
