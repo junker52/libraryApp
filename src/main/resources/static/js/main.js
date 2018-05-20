@@ -76,6 +76,23 @@ $(document).ready(function() {
         $("#alertValidationReservaDiv").removeClass("d-none");
     }
 
+    // Hover for devolver and prorrogar links
+    $("[class='btn btn-outline-danger text-danger']").hover(function () {
+        //Hover in function
+        $(this).removeClass('text-danger').addClass('text-white');
+    }, function () {
+        //hover out function
+        $(this).removeClass('text-white').addClass('text-danger');
+    });
+
+    $("[class='btn btn-outline-warning text-warning']").hover(function () {
+        //Hover in function
+        $(this).removeClass('text-warning').addClass('text-white');
+    }, function () {
+        //hover out function
+        $(this).removeClass('text-white').addClass('text-warning');
+    });
+
 });
 
 

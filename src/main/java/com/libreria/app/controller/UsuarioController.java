@@ -10,7 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -39,5 +41,17 @@ public class UsuarioController {
         lbm.addObject("sessionContext",sessionContext);
         lbm.addObject("reservas",reservas);
         return lbm;
+    }
+
+    @GetMapping("/devolver/{id_reserva}")
+    private RedirectView devolverReserva(@PathVariable("id_reserva") Integer idReserva){
+        //TODO Implementar devolver libro modificando la fechaHasta de la reserva
+        return null;
+    }
+
+    @GetMapping("/devolver/{id_reserva}")
+    private RedirectView prorrogarReserva(@PathVariable("id_reserva") Integer idReserva){
+        //TODO Implementar prorrogar reserva 10 dias
+        return null;
     }
 }

@@ -30,15 +30,21 @@
                 <th scope="col">Autor</th>
                 <th scope="col">Fecha de alquiler</th>
                 <th scope="col">Fecha de devolución</th>
+                <th scope="col">Acciones</th>
+
               </tr>
             </thead>
             <tbody>
               <tr th:each="reserva,itrStat : ${reservas}">
-                <th scope="row" th:text="${itrStat.index + 1}"></th>
-                <td th:text="${reserva.libro.titulo}">Titulo</td>
-                <td th:text="${reserva.libro.autor.nombre}+' '+${reserva.libro.autor.apellido1}+' '+${reserva.libro.autor.apellido2}">Autor</td>
-                <td th:text="${reserva.fechaDesde}">Fecha inicio</td>
-                <td th:text="${reserva.fechaHasta}">Fecha fin</td>
+                <th class="align-middle" scope="row" th:text="${itrStat.index + 1}"></th>
+                <td class="align-middle" th:text="${reserva.libro.titulo}">Titulo</td>
+                <td class="align-middle" th:text="${reserva.libro.autor.nombre}+' '+${reserva.libro.autor.apellido1}+' '+${reserva.libro.autor.apellido2}">Autor</td>
+                <td class="align-middle" th:text="${reserva.fechaDesde}">Fecha inicio</td>
+                <td class="align-middle" th:text="${reserva.fechaHasta}">Fecha fin</td>
+                <td>
+                  <a class="btn btn-outline-danger text-danger">Devolver</a>
+                  <a class="btn btn-outline-warning text-warning">Prorrogar</a>
+                </td>
               </tr>
             </tbody>
           </table>
