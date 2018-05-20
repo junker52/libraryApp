@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/templates :: head">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md bg-primary navbar-dark" th:replace="fragments/templates :: navbar">
+    <p>Navbar!</p>
+  </nav>
+  <div class="py-5">
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <h1 class="">Mis alquileres</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="">Estos son los libros que tienes actualmente alquilados.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Fecha de alquiler</th>
+                <th scope="col">Fecha de devolución</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="reserva,itrStat : ${reservas}">
+                <th scope="row" th:text="${itrStat.index + 1}"></th>
+                <td th:text="${reserva.libro.titulo}">Titulo</td>
+                <td th:text="${reserva.libro.autor.nombre}+' '+${reserva.libro.autor.apellido1}+' '+${reserva.libro.autor.apellido2}">Autor</td>
+                <td th:text="${reserva.fechaDesde}">Fecha inicio</td>
+                <td th:text="${reserva.fechaHasta}">Fecha fin</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div th:replace="fragments/templates :: footer">
+    <p>Footer</p>
+  </div>
+</body>
+
+</html>

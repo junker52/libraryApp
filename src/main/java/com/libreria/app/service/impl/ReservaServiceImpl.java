@@ -14,6 +14,7 @@ import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -51,6 +52,11 @@ public class ReservaServiceImpl implements ReservaService {
         List<String> validationErrorMessages = new ArrayList<>();
         this.propertiesValidation(validationReservaDTO, validationErrorMessages);
         validationReservaDTO.setErrorMessages(validationErrorMessages);
+    }
+
+    @Override
+    public List<Reserva> getAllValidReservasByUsuario(Integer id_usuario){
+        return reservaRepository.findReservaActivaByUsuario(new Date(),id_usuario);
     }
 
     /**

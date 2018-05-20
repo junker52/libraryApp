@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head>
-  <meta charset="utf-8" th:fragment="navbar">
+  <meta charset="utf-8" th:fragment="head">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title th:text="${title}"></title>
   <link rel="stylesheet"
@@ -35,7 +35,7 @@
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Mis datos</a>
-            <a class="dropdown-item" href="#">Mis libros alquilados</a>
+            <a class="dropdown-item" th:href="@{/usuario/misalquileres}">Mis libros alquilados</a>
             <a class="dropdown-item" href="#">Mis libros leídos</a>
           </div>
         </div>

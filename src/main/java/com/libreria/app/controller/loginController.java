@@ -1,3 +1,4 @@
+
 package com.libreria.app.controller;
 
 import javax.validation.Valid;
@@ -68,5 +69,4 @@ public class loginController {
 		return modelAndView;
 	}
 	*/
-
 }
