@@ -37,6 +37,10 @@ public class Reserva {
         return libro;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public void setLibro(Libro libro) {
         this.libro = libro;
     }

@@ -18,7 +18,7 @@ import java.sql.Date;
 import java.util.List;
 
 @Controller
-public class initController {
+public class InitController {
 
 	public final String INITIAL_VIEW = "init";
 

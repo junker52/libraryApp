@@ -15,6 +15,17 @@
           <h1 class="">Mis alquileres</h1>
         </div>
       </div>
+      <!-- Alerts -->
+      <div class="row">
+        <div class="col-md-12">
+          <div th:if="${success != null}" class="alert alert-success" role="alert">
+            <span th:text="${success}">Alert</span>
+          </div>
+          <div th:if="${danger != null}" class="alert alert-danger" role="alert">
+            <span th:text="${danger}">Alert</span>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-12">
           <p class="">Estos son los libros que tienes actualmente alquilados.</p>
@@ -42,7 +53,7 @@
                 <td class="align-middle" th:text="${reserva.fechaDesde}">Fecha inicio</td>
                 <td class="align-middle" th:text="${reserva.fechaHasta}">Fecha fin</td>
                 <td>
-                  <a class="btn btn-outline-danger text-danger">Devolver</a>
+                  <a class="btn btn-outline-danger text-danger" th:href="@{/usuario/devolver/}+${reserva.id}">Devolver</a>
                   <a class="btn btn-outline-warning text-warning">Prorrogar</a>
                 </td>
               </tr>

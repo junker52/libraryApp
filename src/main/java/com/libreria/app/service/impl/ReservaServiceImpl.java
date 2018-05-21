@@ -48,6 +48,14 @@ public class ReservaServiceImpl implements ReservaService {
     }
 
     @Override
+    @Transactional
+    public void devolverReserva(Integer idReserva){
+        Reserva reserva = this.getResevaById(idReserva);
+        reserva.setFechaHasta(new Date());
+        this.reservaRepository.save(reserva);
+    }
+
+    @Override
     public void validateReserva(ValidationReservaDTO validationReservaDTO){
         List<String> validationErrorMessages = new ArrayList<>();
         this.propertiesValidation(validationReservaDTO, validationErrorMessages);
@@ -57,6 +65,11 @@ public class ReservaServiceImpl implements ReservaService {
     @Override
     public List<Reserva> getAllValidReservasByUsuario(Integer id_usuario){
         return reservaRepository.findReservaActivaByUsuario(new Date(),id_usuario);
+    }
+
+    @Override
+    public Reserva getResevaById(Integer id){
+        return this.reservaRepository.getOne(id);
     }
 
     /**

@@ -3,6 +3,7 @@ package com.libreria.app.service;
 import com.libreria.app.dto.ValidationReservaDTO;
 import com.libreria.app.model.Reserva;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -10,7 +11,13 @@ import java.util.List;
  */
 public interface ReservaService {
     void createReserva(Reserva reserva);
+
+    @Transactional
+    void devolverReserva(Integer idReserva);
+
     void validateReserva(ValidationReservaDTO validationReservaDTO);
 
     List<Reserva> getAllValidReservasByUsuario(Integer id_usuario);
+
+    Reserva getResevaById(Integer id);
 }
